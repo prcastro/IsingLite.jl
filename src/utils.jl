@@ -1,9 +1,10 @@
 randspin()                               = [1,-1][rand(1:2)] # Generate a random spin
 spingrid(n::Int)                         = [randspin() for i in 1:n, j in 1:n] # Generate a random spin array
 magnetization(a::Array{Int, 2})          = mean(a) |> abs # Get magnetizations of the grid
-namefunc(f::Function)                    = "$f"[1:end-1]  
-nspins(a::Array{Int, 2}, i::Int, j::Int) = [a[x,y] for (x,y) in neighbors(a,i,j)]
+namefunc(f::Function)                    = "$f"[1:end-1]  # Get the simplified name of a function
+nspins(a::Array{Int, 2}, i::Int, j::Int) = [a[x,y] for (x,y) in neighbors(a,i,j)] # Get surrounding spins
 
+# Flip a spin
 function flip!(grid::Array{Int, 2}, cluster::BitArray{2})
     for i in 1:size(grid, 1)
         for j in 1:size(grid, 2)
@@ -12,6 +13,7 @@ function flip!(grid::Array{Int, 2}, cluster::BitArray{2})
     end
 end
 
+# Return the sum of spins on a cluster
 function clusterspin(grid::Array{Int, 2}, cluster::BitArray{2})
     spin = 0
     for i in 1:size(grid, 1)

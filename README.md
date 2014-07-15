@@ -74,7 +74,7 @@ The only non-optional argument of the `diagram` function is a function `f` imple
 
 ### Auxiliary functions
 
-The function `neightbors` receives a grid `g`, and two coordinates `i` and `j` inside it, and return an array of coordinates (each one in a tuple of the kind (x,y)) of it's neighbors. Example:
+The function `neighbors` receives a grid `g`, and two coordinates `i` and `j` inside it, and return an array of coordinates (each one in a tuple of the kind (x,y)) of it's neighbors. Example:
 
 ```julia
 g = spingrid(10)
