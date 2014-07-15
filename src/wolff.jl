@@ -48,7 +48,7 @@ function wolff!(grid::Array{Int, 2};
         PyPlot.xlabel("Number of Iterations")
         PyPlot.ylabel("Magnetization")
         PyPlot.ylim(0,1.1)
-        PyPlot.savefig("Plots/wolff/wolff_T=$temp.png")
+        PyPlot.savefig("wolff_T=$temp.png")
         PyPlot.close()
     end
     

@@ -64,7 +64,7 @@ function diagram(func::Function;
         PyPlot.xlabel("Temperature")
         PyPlot.ylabel("Mean Magnetization")
         PyPlot.ylim(0,1.1)
-        PyPlot.savefig("Plots/$name/diag_$(name)_H=$h.png")
+        PyPlot.savefig("diag_$(name)_H=$h.png")
         PyPlot.close()
     end
 

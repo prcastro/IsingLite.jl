@@ -41,7 +41,7 @@ function metropolis!(grid::Array{Int, 2};
         PyPlot.xlabel("Number of Iterations")
         PyPlot.ylabel("Magnetization")
         PyPlot.ylim(0,1.1)
-        PyPlot.savefig("Plots/metropolis/metropolis_T=$temp.png")
+        PyPlot.savefig("metropolis_T=$temp.png")
         PyPlot.close()
     end
 

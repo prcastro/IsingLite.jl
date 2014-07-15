@@ -42,7 +42,7 @@ function heatbath!(grid::Array{Int, 2};                            # Spin grid
         PyPlot.xlabel("Number of Iterations")
         PyPlot.ylabel("Magnetization")
         PyPlot.ylim(0,1.1) 
-        PyPlot.savefig("Plots/heatbath/heatbath_T=$temp.png")
+        PyPlot.savefig("heatbath_T=$temp.png")
         PyPlot.close()
     end
 
