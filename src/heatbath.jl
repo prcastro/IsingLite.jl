@@ -1,8 +1,8 @@
 # One step of the heat bath algorithm on a Ising's spin grid
-function stepheatbath!(grid::Array{Int, 2};                            # Spin grid
-                       h::Float64                = 0.0,                # External field
-                       temp::Float64             = 1.0,                # Temperature
-                       verbose::Bool             = true)               # Verbose flag
+function stepheatbath!(grid::Array{Int, 2};              # Spin grid
+                       h::Float64                = 0.0,  # External field
+                       temp::Float64             = 1.0,  # Temperature
+                       verbose::Bool             = true) # Verbose flag
 
     @assert temp != 0 "ArgumentError: Temperature can't be zero"
 
@@ -23,13 +23,12 @@ function stepheatbath!(grid::Array{Int, 2};                            # Spin gr
 end
 
 # Several steps of the heat bath algorithm on a Ising's spin grid
-function heatbath!(grid::Array{Int, 2};                            # Spin grid
-                   h::Float64                = 0.0,                # External field
-                   temp::Float64             = 1.0,                # Temperature
-                   iters::Int                = 50000,              # Number of iterations
-                   ε::Float64                = 0.001,              # Tolerance for convergence
-                   plot::Bool                = true,               # Plot flag
-                   verbose::Bool             = true)               # Verbose flag
+function heatbath!(grid::Array{Int, 2};               # Spin grid
+                   h::Float64                = 0.0,   # External field
+                   temp::Float64             = 1.0,   # Temperature
+                   iters::Integer            = 50000, # Number of iterations
+                   plot::Bool                = true,  # Plot flag
+                   verbose::Bool             = true)  # Verbose flag
 
     @assert iters > 100 "ArgumentError: \"iters\" must be higher than 100"
     m = [stepheatbath!(grid, h=h, temp=temp, verbose=false) |> magnetization for i in 1:iters]

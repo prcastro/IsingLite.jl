@@ -1,9 +1,9 @@
-function recursion_wolff!(grid::Array{Int, 2},
-                          cluster::BitArray{2},
-                          i::Int,
-                          j::Int;
-                          h::Float64              = 0.0,
-                          temp::Float64           = 1.0)
+function recursion_wolff!(grid::Array{Int, 2},         # Spin grig     
+                          cluster::BitArray{2},        # Cluster grid
+                          i::Int,                      # Row coordinate
+                          j::Int;                      # Column coordinate
+                          h::Float64            = 0.0, # External field
+                          temp::Float64         = 1.0) # Temperature
     
     cluster[i, j] = true
     for (x, y) in neighbors(grid, i, j)
@@ -18,8 +18,8 @@ end
 function wolff!(grid::Array{Int, 2};
                 h::Float64           = 0.0,  # External field
                 temp::Float64        = 1.0,  # Temperature
-                iters::Int           = 30,
-                plot::Bool           = true,
+                iters::Integer       = 30,   # Number of iterations
+                plot::Bool           = true, # Plot flag
                 verbose::Bool        = true) # Verbose flag
 
     m = Array(Float64, 0)

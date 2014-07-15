@@ -1,7 +1,7 @@
-randspin()                      = [1,-1][rand(1:2)] # Generate a random spin
-spingrid(n::Int)                = [randspin() for i in 1:n, j in 1:n] # Generate a random spin array
-magnetization(a::Array{Int, 2}) = mean(a) |> abs # Get magnetizations of the grid
-namefunc(f::Function)           = "$f"[1:end-1]  
+randspin()                               = [1,-1][rand(1:2)] # Generate a random spin
+spingrid(n::Int)                         = [randspin() for i in 1:n, j in 1:n] # Generate a random spin array
+magnetization(a::Array{Int, 2})          = mean(a) |> abs # Get magnetizations of the grid
+namefunc(f::Function)                    = "$f"[1:end-1]  
 nspins(a::Array{Int, 2}, i::Int, j::Int) = [a[x,y] for (x,y) in neighbors(a,i,j)]
 
 function flip!(grid::Array{Int, 2}, cluster::BitArray{2})
@@ -23,7 +23,7 @@ function clusterspin(grid::Array{Int, 2}, cluster::BitArray{2})
 end
 
 # Return an array of neighbors coordinates (each one in a tuple of the kind (x,y))
-function neighbors(grid::Array{Int, 2}, i::Int, j::Int)
+function neighbors(grid::Array{Int, 2}, i::Integer, j::Int)
     n = Array((Int,Int), 0)
 
     if i > 1             push!(n, (i-1, j  )) end
@@ -36,13 +36,13 @@ end
 
 # Phase diagram (magnetization by temperature) using given algorithm
 function diagram(func::Function;
-                 size::Int          = 10,    # Size of the grid
-                 ensembles::Int     = 50,    # Number of ensembles
+                 size::Integer      = 10,    # Size of the grid
+                 ensembles::Integer = 50,    # Number of ensembles
                  h::Float64         = 0.0,   # External field
                  mintemp::Float64   = 0.5,   # Starting temperature
                  step::Float64      = 0.2,   # Step of temperatures
                  maxtemp::Float64   = 6.0,   # Final temperature
-                 iters::Int         = 50000, # Number of the iterations
+                 iters::Integer     = 50000, # Number of the iterations
                  plot::Bool         = true,  # Plot flag
                  verbose::Bool      = true)  # Verbose flag
     
@@ -68,5 +68,5 @@ function diagram(func::Function;
         PyPlot.close()
     end
 
-    return mags, temps
+    return temps, mags
 end
