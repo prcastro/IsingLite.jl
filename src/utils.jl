@@ -6,20 +6,16 @@ nspins(a::Array{Int, 2}, i::Int, j::Int) = [a[x,y] for (x,y) in neighbors(a,i,j)
 
 # Flip a spin
 function flip!(grid::Array{Int, 2}, cluster::BitArray{2})
-    for i in 1:size(grid, 1)
-        for j in 1:size(grid, 2)
-            if cluster[i, j] == true grid[i, j] *= -1 end
-        end
+    for j in 1:size(grid, 2), i in 1:size(grid, 1)
+        if cluster[i, j] == true grid[i, j] *= -1 end
     end
 end
 
 # Return the sum of spins on a cluster
 function clusterspin(grid::Array{Int, 2}, cluster::BitArray{2})
     spin = 0
-    for i in 1:size(grid, 1)
-        for j in 1:size(grid, 2)
-            if cluster[i,j] == true spin += grid[i,j] end
-        end
+    for j in 1:size(grid, 2), i in 1:size(grid, 1)
+        if cluster[i,j] == true spin += grid[i,j] end
     end
     return spin
 end
@@ -29,7 +25,7 @@ function neighbors(grid::Array{Int, 2}, i::Integer, j::Int)
     n = Array((Int,Int), 0)
 
     if i > 1             push!(n, (i-1, j  )) end
-    if j > 1             push!(n, (i,   j-1)) end    
+    if j > 1             push!(n, (i,   j-1)) end
     if i < size(grid, 1) push!(n, (i+1, j  )) end
     if j < size(grid, 2) push!(n, (i,   j+1)) end
 
@@ -47,7 +43,7 @@ function diagram(func::Function;
                  iters::Integer     = 50000, # Number of the iterations
                  plot::Bool         = true,  # Plot flag
                  verbose::Bool      = true)  # Verbose flag
-    
+
     name  = namefunc(func)
     temps = Array(Float64, 0)
     mags  = Array(Float64, 0)
