@@ -45,8 +45,8 @@ function diagram(func::Function;
                  verbose::Bool      = true)  # Verbose flag
 
     name  = namefunc(func)
-    temps = Array(Float64, 0)
-    mags  = Array(Float64, 0)
+    temps = Float64[]
+    mags  = Float64[]
     for t in mintemp:step:maxtemp
         m = mean([func(spingrid(size), h=h, temp=t, iters=iters, plot=false, verbose=false)[end] for i in 1:ensembles])
         if verbose println("(T=$t) Avg. magnetization after $name: $m") end

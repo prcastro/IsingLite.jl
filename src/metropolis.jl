@@ -26,7 +26,7 @@ function metropolis!(grid::Array{Int, 2};  # Spin grid
                      plot::Bool=true,      # Plot flag
                      verbose::Bool=true)   # Verbose flag
 
-    m = Array(Float64, 0)
+    m = Float64[]
     for i in 1:iters
         stepmetropolis!(grid, h=h, temp=temp)
         push!(m, magnetization(grid))

@@ -1,10 +1,10 @@
-function recursion_wolff!(grid::Array{Int, 2},         # Spin grig     
+function recursion_wolff!(grid::Array{Int, 2},         # Spin grig
                           cluster::BitArray{2},        # Cluster grid
                           i::Int,                      # Row coordinate
                           j::Int;                      # Column coordinate
                           h::Float64            = 0.0, # External field
                           temp::Float64         = 1.0) # Temperature
-    
+
     cluster[i, j] = true
     for (x, y) in neighbors(grid, i, j)
         if cluster[x,y] == false && grid[x,y] == grid[i, j]
@@ -22,8 +22,8 @@ function wolff!(grid::Array{Int, 2};
                 plot::Bool           = true, # Plot flag
                 verbose::Bool        = true) # Verbose flag
 
-    m = Array(Float64, 0)
-    for i in 1:iters    
+    m = Float64[]
+    for i in 1:iters
         # Randomly pick a position within the grid
         x   = rand(1:size(grid, 1))
         y   = rand(1:size(grid, 2))
@@ -51,6 +51,6 @@ function wolff!(grid::Array{Int, 2};
         PyPlot.savefig("wolff_T=$temp.png")
         PyPlot.close()
     end
-    
+
     return m
 end
