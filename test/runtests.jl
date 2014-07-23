@@ -1,3 +1,5 @@
+# Tests nothing currently
+
 using IsingLite
 using Base.Test
 
