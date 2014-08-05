@@ -1,6 +1,6 @@
 ## IsingLite
 
-Some fun with 2-dimensional [Ising model](https://en.wikipedia.org/wiki/Ising_model) and algorithms as Heat Bath, Metropolis and Wolff. This package provides function to create and play with simples simulations and Monte Carlo algorithms.
+Some fun with 2-dimensional [Ising model](https://en.wikipedia.org/wiki/Ising_model) and algorithms as Heat Bath, Metropolis and Wolff. This package provides functions to create and play with simples simulations and Monte Carlo algorithms.
 
 ## Installation
 
